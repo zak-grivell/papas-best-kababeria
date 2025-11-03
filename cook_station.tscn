@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cf5qbdb52o38i"]
+
+[node name="Cook Station" type="Container"]
+metadata/_tab_index = 1

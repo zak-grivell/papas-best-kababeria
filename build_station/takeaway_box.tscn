@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2dcnk8vgg5ad"]
+
+[ext_resource type="Texture2D" uid="uid://dxf66jocmv6w8" path="res://build_station/Assets/Takeaway-box.png" id="1_hsp4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6hov"]
+size = Vector2(352, 288)
+
+[node name="TakeawayBox" type="Area2D" groups=["takeaway-box"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(224, -14)
+rotation = 2.893756
+texture = ExtResource("1_hsp4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(112, 16)
+shape = SubResource("RectangleShape2D_p6hov")

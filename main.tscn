@@ -1,0 +1,139 @@
+[gd_scene load_steps=22 format=3 uid="uid://44vpewpbs465"]
+
+[ext_resource type="PackedScene" uid="uid://da2oisa3a1chr" path="res://order_station.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cf5qbdb52o38i" path="res://cook_station.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bheb7evjpspe6" path="res://drinks_station/drinks_station.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bspg3f7073uow" path="res://build_station/build_station.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://8talxbms7gug" path="res://tab_bar.gd" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://clpkvhsvfc7jn" path="res://assets/Side Menu.png" id="5_4c57u"]
+[ext_resource type="Texture2D" uid="uid://cine552thy3ef" path="res://assets/order.png" id="5_kek77"]
+[ext_resource type="Texture2D" uid="uid://b5a54r50ahgh8" path="res://assets/cook.png" id="6_4c57u"]
+[ext_resource type="Texture2D" uid="uid://b7vyjrb5i2f0f" path="res://assets/Hang line.png" id="6_efxa6"]
+[ext_resource type="Texture2D" uid="uid://cfpy72b416qed" path="res://assets/assemble.png" id="7_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dhapcgaowsiyt" path="res://assets/drink.png" id="8_dg77c"]
+[ext_resource type="Texture2D" uid="uid://cf61581i686rr" path="res://assets/FinishOrderButton.png" id="12_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://cobxhkhu17dhp" path="res://assets/FinishOrderDisabled.png" id="13_w48qg"]
+
+[sub_resource type="Theme" id="Theme_4c57u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4c57u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efxa6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dg77c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycdy4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w48qg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vivmo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cqfq"]
+
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1600.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/drop_mark_color = Color(0.92977464, 0.5011101, 0, 1)
+theme_override_colors/font_selected_color = Color(0.970239, 0.94062257, 0, 1)
+theme_override_constants/tab_separation = 50
+tab_alignment = 1
+current_tab = 0
+tabs_position = 1
+clip_tabs = false
+tabs_visible = false
+all_tabs_in_front = true
+
+[node name="Order Station" parent="TabContainer" instance=ExtResource("1_0xm2m")]
+layout_mode = 2
+
+[node name="Cook Station" parent="TabContainer" instance=ExtResource("2_h2yge")]
+visible = false
+layout_mode = 2
+
+[node name="Build Station" parent="TabContainer" instance=ExtResource("3_lquwl")]
+visible = false
+layout_mode = 2
+
+[node name="DrinksStation" parent="TabContainer" instance=ExtResource("3_h2yge")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="UI Layer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_4c57u")
+
+[node name="TextureRect2" type="TextureRect" parent="UI Layer"]
+offset_right = 1600.0
+offset_bottom = 1250.0
+mouse_filter = 2
+texture = ExtResource("6_efxa6")
+
+[node name="TabBar" type="TabBar" parent="UI Layer" node_paths=PackedStringArray("tab_container")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -376.0
+offset_top = 8.0
+offset_right = 124.0
+offset_bottom = 116.0
+grow_horizontal = 0
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_4c57u")
+theme_override_colors/drop_mark_color = Color(1, 1, 1, 0)
+theme_override_colors/font_selected_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_hovered_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_unselected_color = Color(0.69803923, 0.69803923, 0.69803923, 0)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/h_separation = 20
+theme_override_constants/tab_separation = 20
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_4c57u")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_efxa6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_dg77c")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ycdy4")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_w48qg")
+theme_override_styles/button_pressed = SubResource("StyleBoxEmpty_vivmo")
+theme_override_styles/button_highlight = SubResource("StyleBoxEmpty_2cqfq")
+current_tab = 3
+tab_alignment = 2
+close_with_middle_mouse = false
+scrolling_enabled = false
+scroll_to_selected = false
+tab_count = 4
+tab_0/icon = ExtResource("5_kek77")
+tab_1/icon = ExtResource("6_4c57u")
+tab_2/icon = ExtResource("7_efxa6")
+tab_3/icon = ExtResource("8_dg77c")
+script = ExtResource("4_1bvp3")
+tab_container = NodePath("../../TabContainer")
+
+[node name="TextureButton" type="TextureButton" parent="UI Layer"]
+offset_left = 1648.0
+offset_top = 992.0
+offset_right = 1961.0
+offset_bottom = 1107.0
+disabled = true
+texture_normal = ExtResource("12_ycdy4")
+texture_disabled = ExtResource("13_w48qg")

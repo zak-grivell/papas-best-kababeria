@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cofspt5y1op76"]
+
+[ext_resource type="Script" uid="uid://d0hlb1xrof4n6" path="res://build_station/wrap.gd" id="1_3xgo2"]
+[ext_resource type="Texture2D" uid="uid://f1vg15byx5g1" path="res://build_station/Assets/Wrap.png" id="1_b6xyq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6xyq"]
+radius = 159.99998
+
+[node name="Wrap" type="Area2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_3xgo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_b6xyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b6xyq")

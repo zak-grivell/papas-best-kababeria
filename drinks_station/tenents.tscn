@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://cotskyv7td4e"]
+
+[ext_resource type="Script" uid="uid://bddub50rprn54" path="res://drinks_station/drink.gd" id="1_j4bo8"]
+[ext_resource type="Texture2D" uid="uid://bahasmrifl864" path="res://drinks_station/assets/Tenents/Glass_Back.png" id="2_pa5dg"]
+[ext_resource type="Script" uid="uid://1u8iw4msok66" path="res://drinks_station/sprite_renderer.gd" id="2_yljrb"]
+[ext_resource type="Texture2D" uid="uid://cabyd5e3lhx64" path="res://drinks_station/assets/Tenents/Glass_Front.png" id="3_yljrb"]
+[ext_resource type="Texture2D" uid="uid://bac4erdd723ne" path="res://drinks_station/assets/Tenents/Mask.png" id="4_qv20h"]
+[ext_resource type="Texture2D" uid="uid://wqr6dal83se1" path="res://drinks_station/assets/Tenents/Beer.png" id="5_gc7ds"]
+[ext_resource type="Texture2D" uid="uid://bn2roo8q501bo" path="res://drinks_station/assets/Tenents/Head.png" id="6_fmx00"]
+[ext_resource type="Texture2D" uid="uid://i8gpnu840hm3" path="res://drinks_station/assets/Tenents/BeerTop.png" id="6_yljrb"]
+[ext_resource type="Texture2D" uid="uid://ci67jdahys6ba" path="res://drinks_station/assets/curved_slider.png" id="7_ylcda"]
+[ext_resource type="Texture2D" uid="uid://bf6iloq6gdrrf" path="res://drinks_station/assets/Tenents/overflow.png" id="10_qv20h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j5ia"]
+size = Vector2(541.66675, 1500)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73f5g"]
+radius = 150.03702
+
+[node name="Tenents2" type="Area2D"]
+z_index = 1
+rotation = -3.1415925
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_j4bo8")
+
+[node name="GlassBack" type="Sprite2D" parent="."]
+position = Vector2(-13.333318, 606.6666)
+scale = Vector2(0.9999998, 0.9999998)
+texture = ExtResource("2_pa5dg")
+
+[node name="BeerMask" type="Sprite2D" parent="."]
+clip_children = 1
+z_index = 1
+position = Vector2(-13.333318, 606.6665)
+scale = Vector2(0.9999994, 0.9999994)
+texture = ExtResource("4_qv20h")
+script = ExtResource("2_yljrb")
+
+[node name="BeerTop" type="Sprite2D" parent="BeerMask"]
+texture = ExtResource("6_yljrb")
+
+[node name="Head" type="Sprite2D" parent="BeerMask"]
+texture = ExtResource("6_fmx00")
+region_rect = Rect2(-11.5, -8, 117.5, 71)
+
+[node name="Beer" type="Sprite2D" parent="BeerMask"]
+texture = ExtResource("5_gc7ds")
+region_rect = Rect2(-11.5, -8, 117.5, 71)
+
+[node name="GlassFront" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, 606.667)
+scale = Vector2(0.9999998, 0.9999998)
+texture = ExtResource("3_yljrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15.833318, 743.333)
+shape = SubResource("RectangleShape2D_6j5ia")
+
+[node name="Knob" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knob"]
+position = Vector2(-1.9073486e-06, -8.34465e-05)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_73f5g")
+
+[node name="Sprite" type="Sprite2D" parent="Knob"]
+scale = Vector2(10, 10)
+texture = ExtResource("7_ylcda")
+
+[node name="Overflow" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(-13.333, 606.667)
+texture = ExtResource("10_qv20h")

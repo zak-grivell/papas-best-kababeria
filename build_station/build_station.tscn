@@ -1,0 +1,176 @@
+[gd_scene load_steps=28 format=3 uid="uid://bspg3f7073uow"]
+
+[ext_resource type="Script" uid="uid://dyt1apnj0d60h" path="res://build_station/wrap_manager.gd" id="1_8cbhs"]
+[ext_resource type="Texture2D" uid="uid://c6ns5utsedhr5" path="res://build_station/Assets/Background.png" id="1_yphn8"]
+[ext_resource type="PackedScene" uid="uid://cofspt5y1op76" path="res://build_station/wrap.tscn" id="3_uw0fb"]
+[ext_resource type="Script" uid="uid://cepmwclnfy164" path="res://build_station/topping_spwaner.gd" id="4_dh12g"]
+[ext_resource type="Texture2D" uid="uid://b1kcuhvnbs6q2" path="res://build_station/Assets/Toppings/Cabbage.png" id="5_ixlan"]
+[ext_resource type="Texture2D" uid="uid://8agmx8mug6e6" path="res://build_station/Assets/Toppings/Cucumber .png" id="5_nhm52"]
+[ext_resource type="Texture2D" uid="uid://1ui1k41hfx45" path="res://build_station/Assets/Toppings/Tomato.png" id="6_8tgtx"]
+[ext_resource type="Texture2D" uid="uid://gl5l2251ltll" path="res://build_station/Assets/Toppings/Chili.png" id="6_lddwp"]
+[ext_resource type="Texture2D" uid="uid://cyx6pmhxo6764" path="res://build_station/Assets/Toppings/Lettuce.png" id="7_pidku"]
+[ext_resource type="Texture2D" uid="uid://dsgclmi0hjfq4" path="res://build_station/Assets/Toppings/Chips.png" id="8_lddwp"]
+[ext_resource type="PackedScene" uid="uid://dhcllfkivdj3k" path="res://build_station/sauce_pickup.tscn" id="11_j6m4e"]
+[ext_resource type="Texture2D" uid="uid://bfdi1i883nn0p" path="res://build_station/Assets/Sauces/yogurt_side.png" id="12_pf5kv"]
+[ext_resource type="Texture2D" uid="uid://c6htyhuarv3i5" path="res://build_station/Assets/Sauces/yogurt_top.png" id="13_6nkj0"]
+[ext_resource type="Texture2D" uid="uid://bcxms8ua722uw" path="res://build_station/Assets/Sauces/ketchup_side.png" id="14_p6hov"]
+[ext_resource type="Texture2D" uid="uid://ca3ex0j51dakt" path="res://build_station/Assets/Sauces/ketchup_top.png" id="15_6oefc"]
+[ext_resource type="Texture2D" uid="uid://6mb047puhhh4" path="res://build_station/Assets/Sauces/chili_side.png" id="16_5735o"]
+[ext_resource type="Texture2D" uid="uid://duywmuc0h1n28" path="res://build_station/Assets/Sauces/chili_top.png" id="17_cftxn"]
+[ext_resource type="Texture2D" uid="uid://cpp3iwvfavip8" path="res://build_station/Assets/Sauces/bbq_side.png" id="18_qgsuf"]
+[ext_resource type="Texture2D" uid="uid://d4b2l142fwe74" path="res://build_station/Assets/Sauces/bbq_top.png" id="19_vthu6"]
+[ext_resource type="Texture2D" uid="uid://cr1w5xm6rko6a" path="res://build_station/Assets/Sauces/mayo_side.png" id="20_kf7c4"]
+[ext_resource type="Texture2D" uid="uid://cyaff5f55fkr7" path="res://build_station/Assets/Sauces/mayo_top.png" id="21_swhnm"]
+[ext_resource type="PackedScene" uid="uid://c2dcnk8vgg5ad" path="res://build_station/takeaway_box.tscn" id="22_6nkj0"]
+[ext_resource type="Script" uid="uid://cxj3u4b80p604" path="res://build_station/holding_handler.gd" id="23_p6hov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nkj0"]
+size = Vector2(272, 312)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5kv"]
+size = Vector2(784, 304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ptvn"]
+size = Vector2(232, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhm52"]
+size = Vector2(512, 232)
+
+[node name="BuildStation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+metadata/_tab_index = 2
+
+[node name="Control" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yphn8")
+stretch_mode = 2
+
+[node name="Bin" type="Area2D" parent="."]
+position = Vector2(0, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bin"]
+position = Vector2(1464, 156)
+shape = SubResource("RectangleShape2D_6nkj0")
+
+[node name="TakeawayBoxes" type="Node2D" parent="."]
+position = Vector2(0, 104)
+
+[node name="TakeawayBox" parent="TakeawayBoxes" instance=ExtResource("22_6nkj0")]
+position = Vector2(1312, 984)
+
+[node name="Sauces" type="Area2D" parent="."]
+position = Vector2(0, 104)
+
+[node name="Mayo2" parent="Sauces" instance=ExtResource("11_j6m4e")]
+position = Vector2(776, 200)
+bottle = ExtResource("12_pf5kv")
+top = ExtResource("13_6nkj0")
+sauce_color = Color(1, 0.99607843, 0.9490196, 1)
+
+[node name="Mayo3" parent="Sauces" instance=ExtResource("11_j6m4e")]
+position = Vector2(912, 104)
+bottle = ExtResource("14_p6hov")
+top = ExtResource("15_6oefc")
+sauce_color = Color(0.8509804, 0.20784314, 0.1254902, 1)
+
+[node name="Mayo4" parent="Sauces" instance=ExtResource("11_j6m4e")]
+position = Vector2(1192, 104)
+bottle = ExtResource("16_5735o")
+top = ExtResource("17_cftxn")
+sauce_color = Color(0.6627451, 0.11372549, 0.047058824, 1)
+
+[node name="Mayo5" parent="Sauces" instance=ExtResource("11_j6m4e")]
+position = Vector2(1056, 200)
+bottle = ExtResource("18_qgsuf")
+top = ExtResource("19_vthu6")
+sauce_color = Color(0.2901961, 0.13725491, 0.003921569, 1)
+
+[node name="Mayo" parent="Sauces" instance=ExtResource("11_j6m4e")]
+position = Vector2(640, 104)
+bottle = ExtResource("20_kf7c4")
+top = ExtResource("21_swhnm")
+sauce_color = Color(1, 0.99215686, 0.8509804, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sauces"]
+position = Vector2(920, 152)
+shape = SubResource("RectangleShape2D_pf5kv")
+
+[node name="Wraps" type="Node2D" parent="."]
+position = Vector2(0, 104)
+script = ExtResource("1_8cbhs")
+
+[node name="Wrap" parent="Wraps" instance=ExtResource("3_uw0fb")]
+position = Vector2(248, 500)
+
+[node name="Spawners" type="Node2D" parent="."]
+position = Vector2(0, 104)
+
+[node name="CabbageSpawner" type="Area2D" parent="Spawners"]
+position = Vector2(784, 312)
+script = ExtResource("4_dh12g")
+place_sprite = ExtResource("5_ixlan")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/CabbageSpawner"]
+position = Vector2(132, 132)
+shape = SubResource("RectangleShape2D_5ptvn")
+
+[node name="ChiliSpawner" type="Area2D" parent="Spawners"]
+position = Vector2(1056, 320)
+script = ExtResource("4_dh12g")
+place_sprite = ExtResource("6_lddwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/ChiliSpawner"]
+position = Vector2(130, 132)
+shape = SubResource("RectangleShape2D_5ptvn")
+
+[node name="TomatoSpawner" type="Area2D" parent="Spawners"]
+position = Vector2(1328, 320)
+script = ExtResource("4_dh12g")
+place_sprite = ExtResource("6_8tgtx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/TomatoSpawner"]
+position = Vector2(136, 132)
+shape = SubResource("RectangleShape2D_5ptvn")
+
+[node name="LettuceSpawner" type="Area2D" parent="Spawners"]
+position = Vector2(536, 608)
+script = ExtResource("4_dh12g")
+place_sprite = ExtResource("7_pidku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/LettuceSpawner"]
+position = Vector2(248, 116)
+shape = SubResource("RectangleShape2D_nhm52")
+
+[node name="ChipSpawner" type="Area2D" parent="Spawners"]
+position = Vector2(1080, 608)
+script = ExtResource("4_dh12g")
+place_sprite = ExtResource("8_lddwp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/ChipSpawner"]
+position = Vector2(248, 112)
+shape = SubResource("RectangleShape2D_nhm52")
+
+[node name="CuecumberSpawner" type="Area2D" parent="Spawners"]
+position = Vector2(536, 336)
+script = ExtResource("4_dh12g")
+place_sprite = ExtResource("5_nhm52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/CuecumberSpawner"]
+position = Vector2(108, 112)
+shape = SubResource("RectangleShape2D_5ptvn")
+
+[node name="HoldingHandler" type="Node" parent="."]
+script = ExtResource("23_p6hov")

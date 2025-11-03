@@ -1,0 +1,170 @@
+[gd_scene load_steps=11 format=3 uid="uid://bheb7evjpspe6"]
+
+[ext_resource type="Texture2D" uid="uid://cq6pixfeopskb" path="res://drinks_station/assets/Background.png" id="1_dqg10"]
+[ext_resource type="PackedScene" uid="uid://cotskyv7td4e" path="res://drinks_station/tenents.tscn" id="2_mvdxp"]
+[ext_resource type="PackedScene" uid="uid://cafhtlqrhi54v" path="res://drinks_station/belhaven_best.tscn" id="4_dvtf4"]
+[ext_resource type="PackedScene" uid="uid://8gibdtjshnla" path="res://drinks_station/west.tscn" id="5_aks2u"]
+[ext_resource type="PackedScene" uid="uid://xs8ltswaqayx" path="res://drinks_station/bru.tscn" id="6_54l7f"]
+[ext_resource type="Script" uid="uid://ddo6m21mwpies" path="res://drinks_station/camera_2d.gd" id="6_kwk5w"]
+[ext_resource type="Script" uid="uid://rnwfofs3i0it" path="res://drinks_station/go_down.gd" id="7_kwk5w"]
+[ext_resource type="Texture2D" uid="uid://gkgy32kknexa" path="res://drinks_station/assets/DownButtom.png" id="7_y07b5"]
+[ext_resource type="Texture2D" uid="uid://bkjh6ns6srl2" path="res://drinks_station/assets/beer-taps.png" id="10_6j5ia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aks2u"]
+size = Vector2(285.5, 565)
+
+[node name="DrinksStation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 3.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2500.0
+grow_horizontal = 2
+texture = ExtResource("1_dqg10")
+
+[node name="Glasses" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tenents" parent="Glasses" node_paths=PackedStringArray("camera", "drink_tap") instance=ExtResource("2_mvdxp")]
+position = Vector2(128, 1814)
+me = ExtResource("2_mvdxp")
+camera = NodePath("../../Camera2D")
+drink_tap = NodePath("../../BeerTap/TenentsSlider")
+
+[node name="Belhaven" parent="Glasses" node_paths=PackedStringArray("camera", "drink_tap") instance=ExtResource("4_dvtf4")]
+position = Vector2(483, 1770)
+me = ExtResource("4_dvtf4")
+camera = NodePath("../../Camera2D")
+drink_tap = NodePath("../../BeerTap/BelhavenSlider")
+
+[node name="West" parent="Glasses" node_paths=PackedStringArray("camera", "drink_tap") instance=ExtResource("5_aks2u")]
+position = Vector2(864, 1794)
+me = ExtResource("5_aks2u")
+camera = NodePath("../../Camera2D")
+drink_tap = NodePath("../../BeerTap/WestSlider")
+
+[node name="Bru" parent="Glasses" node_paths=PackedStringArray("camera", "drink_tap") instance=ExtResource("6_54l7f")]
+position = Vector2(1337.9999, 1856.9999)
+me = ExtResource("6_54l7f")
+camera = NodePath("../../Camera2D")
+drink_tap = NodePath("../../BeerTap/BruSlider")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("6_kwk5w")
+bottom_offset = 1250
+
+[node name="Button" type="TextureButton" parent="." node_paths=PackedStringArray("camera")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_y07b5")
+texture_pressed = ExtResource("7_y07b5")
+texture_hover = ExtResource("7_y07b5")
+texture_disabled = ExtResource("7_y07b5")
+texture_focused = ExtResource("7_y07b5")
+script = ExtResource("7_kwk5w")
+camera = NodePath("../Camera2D")
+direction = 1
+
+[node name="Button2" type="TextureButton" parent="." node_paths=PackedStringArray("camera")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = 1055.0
+offset_right = 200.0
+offset_bottom = 1289.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_y07b5")
+texture_pressed = ExtResource("7_y07b5")
+texture_hover = ExtResource("7_y07b5")
+texture_disabled = ExtResource("7_y07b5")
+texture_focused = ExtResource("7_y07b5")
+script = ExtResource("7_kwk5w")
+camera = NodePath("../Camera2D")
+
+[node name="BeerTap" type="Node2D" parent="."]
+position = Vector2(553, 317)
+
+[node name="Sprite2D" type="Sprite2D" parent="BeerTap"]
+position = Vector2(202.25, 422.75)
+scale = Vector2(1.3628571, 1.256701)
+texture = ExtResource("10_6j5ia")
+
+[node name="BruSlider" type="VSlider" parent="BeerTap"]
+visible = false
+offset_left = 95.0
+offset_top = -41.0
+offset_right = 111.0
+offset_bottom = 106.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="TenentsSlider" type="VSlider" parent="BeerTap"]
+visible = false
+offset_left = 326.0
+offset_top = -45.0
+offset_right = 342.0
+offset_bottom = 102.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="BelhavenSlider" type="VSlider" parent="BeerTap"]
+visible = false
+offset_left = 460.0
+offset_top = -52.0
+offset_right = 476.0
+offset_bottom = 95.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="WestSlider" type="VSlider" parent="BeerTap"]
+visible = false
+offset_left = -37.0
+offset_top = -40.0
+offset_right = -21.0
+offset_bottom = 107.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="Sink" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Sink"]
+position = Vector2(143.25, 964.5)
+shape = SubResource("RectangleShape2D_aks2u")
