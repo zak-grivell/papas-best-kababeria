@@ -7,7 +7,8 @@
 size = Vector2(122.999985, 80.24675)
 
 [node name="draggable" type="Area2D"]
-scale = Vector2(1, 0.946)
+rotation = 1.8535397
+scale = Vector2(1.5, 1.419)
 script = ExtResource("2_ybd78")
 item_type = "potato"
 metadata/item_type = "potato"

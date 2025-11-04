@@ -84,9 +84,7 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 		print("detected", click_count)
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		click_count = click_count + 1
-		if click_count % 2 == 0:
-			_spawn_meat(event.position)
+		_spawn_meat(event.position)
 
 
 func _spawn_meat(spawn_position: Vector2):
@@ -113,6 +111,7 @@ func _spawn_meat(spawn_position: Vector2):
 			angle = 40.8
 		get_tree().root.add_child(new_meat)
 		new_meat.global_position = spawn_position
+		new_meat.delete_on_not_found = true
 		if size != null:
 			new_meat.rotation_degrees = angle
 			new_meat.scale = size

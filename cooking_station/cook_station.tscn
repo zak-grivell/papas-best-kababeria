@@ -30,8 +30,6 @@ texture = ExtResource("7_272bh")
 [node name="potato" parent="Node2D" instance=ExtResource("1_1bvp3")]
 z_index = 7
 position = Vector2(65.99999, 1062.0001)
-rotation = -1.2863077
-scale = Vector2(1.5, 1.361)
 
 [node name="chipFryer" parent="Node2D" instance=ExtResource("1_h2yge")]
 position = Vector2(322, 1094)

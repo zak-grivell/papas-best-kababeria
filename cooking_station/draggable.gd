@@ -3,6 +3,7 @@ extends Area2D
 class_name Draggable
 
 @export var item_type: String = ""
+@export var delete_on_not_found: bool = false
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var start_position: Vector2 = Vector2.ZERO
@@ -10,8 +11,6 @@ var start_position: Vector2 = Vector2.ZERO
 @export var on_spawn_drag: bool
 
 var first_use = true
-
-var meat_types = ["pork", "chicken", "beef", "lamb", "lamb_uncooked", "beef_uncooked", "chicken_uncooked", "pork_uncooked"]
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -49,6 +48,6 @@ func _try_drop() -> void:
 			break
 
 	if not dropped:
-		if item_type in meat_types:
+		if delete_on_not_found:
 			queue_free()
 		global_position = start_position

@@ -12,11 +12,17 @@ func _ready() -> void:
 	accepts.append("chicken")
 	accepts.append("pork")
 
-func _on_item_dropped(item: Node) -> void:
+func _on_item_dropped(item: Node2D) -> void:
 	current_item = item
 	
+	var pos = item.global_position
+	var s = item.global_scale
+	
 	item.get_parent().remove_child(item)
-	item.add_child(self)
+	self.add_child(item)
+	
+	item.global_position = pos
+	item.global_scale = s
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
