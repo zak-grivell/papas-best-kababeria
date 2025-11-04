@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bspg3f7073uow"]
+[gd_scene load_steps=29 format=3 uid="uid://bspg3f7073uow"]
 
 [ext_resource type="Script" uid="uid://dyt1apnj0d60h" path="res://build_station/wrap_manager.gd" id="1_8cbhs"]
 [ext_resource type="Texture2D" uid="uid://c6ns5utsedhr5" path="res://build_station/Assets/Background.png" id="1_yphn8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dhcllfkivdj3k" path="res://build_station/sauce_pickup.tscn" id="11_j6m4e"]
 [ext_resource type="Texture2D" uid="uid://bfdi1i883nn0p" path="res://build_station/Assets/Sauces/yogurt_side.png" id="12_pf5kv"]
 [ext_resource type="Texture2D" uid="uid://c6htyhuarv3i5" path="res://build_station/Assets/Sauces/yogurt_top.png" id="13_6nkj0"]
+[ext_resource type="Script" uid="uid://bsijgu53l5iud" path="res://build_station/cooked_topping_reciver.gd" id="14_6oefc"]
 [ext_resource type="Texture2D" uid="uid://bcxms8ua722uw" path="res://build_station/Assets/Sauces/ketchup_side.png" id="14_p6hov"]
 [ext_resource type="Texture2D" uid="uid://ca3ex0j51dakt" path="res://build_station/Assets/Sauces/ketchup_top.png" id="15_6oefc"]
 [ext_resource type="Texture2D" uid="uid://6mb047puhhh4" path="res://build_station/Assets/Sauces/chili_side.png" id="16_5735o"]
@@ -113,12 +114,17 @@ sauce_name = "mayo"
 position = Vector2(920, 152)
 shape = SubResource("RectangleShape2D_pf5kv")
 
+[node name="CookedToppingReciver" type="Node2D" parent="."]
+position = Vector2(0, 104)
+script = ExtResource("14_6oefc")
+positions = Array[Vector2]([Vector2(175, 150), Vector2(425, 150), Vector2(300, 350)])
+
 [node name="Wraps" type="Node2D" parent="."]
 position = Vector2(0, 104)
 script = ExtResource("1_8cbhs")
 
 [node name="Wrap" parent="Wraps" instance=ExtResource("3_uw0fb")]
-position = Vector2(248, 500)
+position = Vector2(248.00002, 664)
 
 [node name="Spawners" type="Node2D" parent="."]
 position = Vector2(0, 104)

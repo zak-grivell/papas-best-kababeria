@@ -68,16 +68,12 @@ scale = Vector2(3, 3)
 
 [node name="plate1" parent="Node2D" instance=ExtResource("6_272bh")]
 position = Vector2(962, 1086)
-scale = Vector2(1.5, 1.5)
 
 [node name="plate2" parent="Node2D" instance=ExtResource("6_272bh")]
 position = Vector2(1474, 1086)
-scale = Vector2(1.5, 1.5)
 
 [node name="plate3" parent="Node2D" instance=ExtResource("6_272bh")]
 position = Vector2(1210, 1086)
-scale = Vector2(1.5, 1.5)
 
 [node name="plate4" parent="Node2D" instance=ExtResource("6_272bh")]
 position = Vector2(722, 1086)
-scale = Vector2(1.5, 1.5)

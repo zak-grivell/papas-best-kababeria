@@ -30,7 +30,7 @@ func render_with_object():
 	$Sauce/Items.clear()
 	
 	for cooked_topping in order.cooked_topings:
-		$CookedToppings/Items.add_icon_item(load("res://build_station/Assets/Toppings/{0}.png".format([
+		$CookedToppings/Items.add_icon_item(load("res://cooking_station/assets/{0}.png".format([
 			"Chips"
 		])))
 		

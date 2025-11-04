@@ -11,7 +11,7 @@ extends "res://cooking_station/drop_zone.gd"
 @onready var sprite: Sprite2D = $Sprite2D
 
 
-const TIME = 5
+const TIME = 0.5
 
 var current_item
 var type
@@ -32,7 +32,7 @@ func _on_item_dropped(item: Draggable) -> String:
 	
 	if current_item != null:
 		current_item.queue_free()
-		sprite.texture = load("res://turner.png")
+		sprite.texture = load("res://cooking_station/assets/turner.png")
 		type = ""
 		size = null
 		angle = null
@@ -109,7 +109,7 @@ func _spawn_meat(spawn_position: Vector2):
 		else:
 			new_meat = uncooked_chicken.instantiate()
 			angle = 40.8
-		get_tree().root.add_child(new_meat)
+		get_parent().add_child(new_meat)
 		new_meat.global_position = spawn_position
 		new_meat.delete_on_not_found = true
 		if size != null:

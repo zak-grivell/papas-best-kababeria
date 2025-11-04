@@ -22,6 +22,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if dragging:
 		global_position = get_global_mouse_position() - drag_offset
+		
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if dragging:
+			_try_drop()
+		dragging = false
 	
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -29,10 +34,9 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 			dragging = true
 			drag_offset = get_local_mouse_position()
 			start_position = global_position
-		else:
-			if dragging:
-				_try_drop()
-			dragging = false
+			
+			if get_parent().has_signal("item_picked"):
+				get_parent().emit_signal("item_picked", self)			
 
 
 func _try_drop() -> void:
@@ -48,6 +52,10 @@ func _try_drop() -> void:
 			break
 
 	if not dropped:
+		
 		if delete_on_not_found:
 			queue_free()
-		global_position = start_position
+		else:	
+			global_position = start_position
+			if get_parent().has_signal("item_returned"):
+				get_parent().emit_signal("item_returned", self)

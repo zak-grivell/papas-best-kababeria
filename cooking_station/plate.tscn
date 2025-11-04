@@ -1,20 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkc6ykk0exlrn"]
+[gd_scene load_steps=6 format=3 uid="uid://dkc6ykk0exlrn"]
 
 [ext_resource type="Script" uid="uid://dhocm7l7tiew1" path="res://cooking_station/plate.gd" id="1_s5yhh"]
 [ext_resource type="Texture2D" uid="uid://du342bsl7gy6b" path="res://cooking_station/assets/plate.png" id="2_uw33f"]
+[ext_resource type="Texture2D" uid="uid://b6sdyxkg1c71b" path="res://cooking_station/assets/send_arrow.png" id="3_4qv7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(153.375, 135.5)
+size = Vector2(153.375, 88)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkinu"]
+radius = 24.0
 
 [node name="DropZone" type="Area2D" groups=["dropable"]]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_s5yhh")
 accepts = Array[String](["fries", "lamb"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["drop_zones"]]
-position = Vector2(-4, 2)
+position = Vector2(-4, 4)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-23, -2.000002)
 scale = Vector2(1.278, 1.122)
 texture = ExtResource("2_uw33f")
+
+[node name="SendButton" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SendButton"]
+shape = SubResource("CircleShape2D_lkinu")
+
+[node name="Sprite2D" type="Sprite2D" parent="SendButton"]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4qv7a")
