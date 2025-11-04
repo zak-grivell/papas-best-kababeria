@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://iosb2w0fsbmo"]
+
+[ext_resource type="PackedScene" uid="uid://d3658trpgufsd" path="res://potato.tscn" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bs4d6oqw6gxe0" path="res://chipFryer.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://wd6v4j0gotbv" path="res://turner.tscn" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://bxcm0f7pr43q5" path="res://raw_beef.tscn" id="6_4c57u"]
+[ext_resource type="PackedScene" uid="uid://b2l476pq16ym" path="res://lamb.tscn" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dkc6ykk0exlrn" path="res://plate.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://dib2b3i7unn1f" path="res://box.tscn" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://qfurg414suhn" path="res://background.png" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://drytdagqjk6me" path="res://raw_chicken.tscn" id="7_efxa6"]
+[ext_resource type="PackedScene" uid="uid://313cwmveoi8o" path="res://raw_pork.tscn" id="8_dg77c"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(-2, 2)
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(575, 315.00003)
+scale = Vector2(0.59973955, 0.6032407)
+texture = ExtResource("7_272bh")
+
+[node name="potato" parent="." instance=ExtResource("1_1bvp3")]
+z_index = 7
+position = Vector2(29.500004, 527.68744)
+scale = Vector2(0.85, 0.7707499)
+
+[node name="chipFryer" parent="." instance=ExtResource("1_h2yge")]
+position = Vector2(236.00002, 556.00006)
+scale = Vector2(0.6, 0.6)
+skew = 0.20943952
+accepts = Array[String]([])
+
+[node name="turner1" parent="." instance=ExtResource("5_272bh")]
+position = Vector2(548, 216)
+scale = Vector2(2, 2)
+accepts = Array[String](["beef_uncooked", "pork_uncooked", "chicken_uncooked", "lamb_uncooked"])
+
+[node name="lamb" parent="." instance=ExtResource("6_5vw27")]
+position = Vector2(169.00002, 208.99998)
+rotation = 0.58294
+scale = Vector2(0.77428305, 0.60756433)
+
+[node name="raw beef" parent="." instance=ExtResource("6_4c57u")]
+position = Vector2(96.000015, 247.99998)
+rotation = -0.7120943
+scale = Vector2(0.7, 0.744)
+
+[node name="raw chicken" parent="." instance=ExtResource("7_efxa6")]
+position = Vector2(31.999985, 283.00003)
+rotation = 0.7120943
+scale = Vector2(0.6406613, 0.68442714)
+
+[node name="raw pork" parent="." instance=ExtResource("8_dg77c")]
+position = Vector2(248.00002, 172.00002)
+rotation = 0.58294
+scale = Vector2(0.45858988, 0.36781383)
+
+[node name="turner2" parent="." instance=ExtResource("5_272bh")]
+position = Vector2(1088, 221)
+scale = Vector2(2, 2)
+accepts = Array[String]([""])
+
+[node name="turner3" parent="." instance=ExtResource("5_272bh")]
+position = Vector2(827, 226)
+scale = Vector2(2, 2)
+
+[node name="plate1" parent="." instance=ExtResource("6_272bh")]
+position = Vector2(674, 559)
+scale = Vector2(0.9, 0.9)
+
+[node name="plate2" parent="." instance=ExtResource("6_272bh")]
+position = Vector2(1062, 559)
+scale = Vector2(0.9, 0.9)
+
+[node name="plate3" parent="." instance=ExtResource("6_272bh")]
+position = Vector2(868, 563)
+scale = Vector2(0.9, 0.9)
+
+[node name="plate4" parent="." instance=ExtResource("6_272bh")]
+position = Vector2(489, 563)
+scale = Vector2(0.9, 0.9)
+
+[node name="DropZone" parent="." instance=ExtResource("7_5vw27")]
+position = Vector2(1277, 543)

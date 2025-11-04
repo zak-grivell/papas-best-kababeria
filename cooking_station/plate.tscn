@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkc6ykk0exlrn"]
 
-[ext_resource type="Script" uid="uid://dhocm7l7tiew1" path="res://cooking_station/plate.gd" id="1_s5yhh"]
-[ext_resource type="Texture2D" uid="uid://du342bsl7gy6b" path="res://cooking_station/assets/plate.png" id="2_uw33f"]
+[ext_resource type="Script" uid="uid://dhocm7l7tiew1" path="res://plate.gd" id="1_s5yhh"]
+[ext_resource type="Texture2D" uid="uid://du342bsl7gy6b" path="res://plate.png" id="2_uw33f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(153.375, 135.5)

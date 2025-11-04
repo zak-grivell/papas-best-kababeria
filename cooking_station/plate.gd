@@ -1,4 +1,4 @@
-extends "res://cooking_station/drop_zone.gd"
+extends "res://drop_zone.gd"
 
 var current_item
 

@@ -1,4 +1,4 @@
-extends "res://cooking_station/drop_zone.gd"
+extends "res://drop_zone.gd"
 
 @export var lamb: PackedScene
 @export var pork: PackedScene
@@ -9,10 +9,6 @@ extends "res://cooking_station/drop_zone.gd"
 @export var uncooked_chicken: PackedScene
 @export var uncooked_beef: PackedScene
 @onready var sprite: Sprite2D = $Sprite2D
-
-
-const TIME = 5
-
 var current_item
 var type
 var new_meat
@@ -28,8 +24,7 @@ func _ready() -> void:
 	accepts.append("pork_uncooked")
 
 func _on_item_dropped(item: Node) -> String:
-	print(item.item_type, "            ", current_item)
-	
+	print("beep")
 	if current_item != null:
 		current_item.queue_free()
 		sprite.texture = load("res://turner.png")
@@ -37,14 +32,13 @@ func _on_item_dropped(item: Node) -> String:
 		size = null
 		angle = null
 	current_item = item
-
 	current_item.visible = false
 	if current_item.item_type == "lamb_uncooked":
 		type = "lamb_uncooked"
 		_spawn_meat(Vector2(169, 209))
 		sprite.texture = load("res://lamb_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
-		await get_tree().create_timer(TIME).timeout
+		await get_tree().create_timer(40).timeout
 		sprite.texture = load("res://lamb_ready.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		type = "lamb"
@@ -53,7 +47,7 @@ func _on_item_dropped(item: Node) -> String:
 		_spawn_meat(Vector2(96, 248))
 		sprite.texture = load("res://beef_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
-		await get_tree().create_timer(TIME).timeout
+		await get_tree().create_timer(40).timeout
 		sprite.texture = load("res://beef_ready.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		type = "beef"
@@ -62,7 +56,7 @@ func _on_item_dropped(item: Node) -> String:
 		_spawn_meat(Vector2(32, 283))
 		sprite.texture = load("res://chicken_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
-		await get_tree().create_timer(TIME).timeout
+		await get_tree().create_timer(40).timeout
 		sprite.texture = load("res://chicken_ready.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		type = "chicken"
@@ -71,7 +65,7 @@ func _on_item_dropped(item: Node) -> String:
 		_spawn_meat(Vector2(248, 172))
 		sprite.texture = load("res://pork_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
-		await get_tree().create_timer(TIME).timeout
+		await get_tree().create_timer(40).timeout
 		sprite.texture = load("res://pork_ready.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		type = "pork"

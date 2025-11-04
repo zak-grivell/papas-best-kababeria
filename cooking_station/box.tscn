@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dib2b3i7unn1f"]
 
-[ext_resource type="Script" uid="uid://hm56iaab3571" path="res://cooking_station/box.gd" id="1_g2tbl"]
-[ext_resource type="Texture2D" uid="uid://7060t85t7ej" path="res://cooking_station/assets/box.png" id="2_oq5cr"]
+[ext_resource type="Script" uid="uid://hm56iaab3571" path="res://box.gd" id="1_g2tbl"]
+[ext_resource type="Texture2D" uid="uid://7060t85t7ej" path="res://box.png" id="2_oq5cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(163, 154.25)

@@ -5,19 +5,10 @@ var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var start_position: Vector2 = Vector2.ZERO
 
-@export var on_spawn_drag: bool
-
-var first_use = true
-
-var meat_types = ["pork", "chicken", "lamb", "beef"]
-
 func _ready() -> void:
 	await get_tree().process_frame
 	start_position = global_position
-	if on_spawn_drag:
-		dragging = true
-		global_position = get_global_mouse_position()
-	
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -53,10 +44,7 @@ func _try_drop() -> void:
 						if zone.has_signal("item_dropped"):
 							zone.emit_signal("item_dropped", self)
 						dropped = true
-						first_use = false
 						break
 
 	if not dropped:
-		if item_type in meat_types:
-			queue_free()
 		global_position = start_position

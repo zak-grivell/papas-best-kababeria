@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxcm0f7pr43q5"]
 
-[ext_resource type="Texture2D" uid="uid://cumbe0to4my4b" path="res://cooking_station/assets/raw beef.png" id="1_sdcer"]
-[ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://cooking_station/draggable.gd" id="2_6o721"]
+[ext_resource type="Texture2D" uid="uid://cumbe0to4my4b" path="res://raw beef.png" id="1_sdcer"]
+[ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://draggable.gd" id="2_6o721"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtr5r"]
 size = Vector2(87.47089, 127.06619)

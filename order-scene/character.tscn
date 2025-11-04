@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3nr1rai4pp78"]
+
+[ext_resource type="Texture2D" uid="uid://7r8brk1mcjsq" path="res://guy.png" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://bchkn64g07jlt" path="res://character.gd" id="2_pjt0s"]
+[ext_resource type="PackedScene" uid="uid://b68xni5l1d75a" path="res://order_sheet.tscn" id="3_wa5vi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa5vi"]
+size = Vector2(252, 453.75)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_pjt0s")
+order = ExtResource("3_wa5vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 37)
+shape = SubResource("RectangleShape2D_wa5vi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.9999695)
+scale = Vector2(0.45285714, 0.4292857)
+texture = ExtResource("1_glpr6")

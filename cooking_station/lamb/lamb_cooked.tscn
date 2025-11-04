@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://sk5pat5n7aug"]
 
-[ext_resource type="Texture2D" uid="uid://bji3j11c0yadn" path="res://cooking_station/assets/meat_pile.png" id="1_lbh17"]
-[ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://cooking_station/draggable.gd" id="2_quffh"]
+[ext_resource type="Texture2D" uid="uid://bji3j11c0yadn" path="res://meat_pile.png" id="1_lbh17"]
+[ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://draggable.gd" id="2_quffh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtr5r"]
 size = Vector2(308.8133, 181.44803)
@@ -12,7 +12,6 @@ scale = Vector2(0.48424998, 0.5091875)
 texture = ExtResource("1_lbh17")
 script = ExtResource("2_quffh")
 item_type = "lamb"
-on_spawn_drag = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(29.382744, 29.074654)
