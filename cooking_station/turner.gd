@@ -79,18 +79,14 @@ func _on_item_dropped(item: Draggable) -> String:
 
 
 #function to click on meat turner and create meat piles
-func _input(event: InputEvent) -> void:
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		print("detected", click_count)
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		click_count = click_count + 1
 		if click_count % 2 == 0:
-			if sprite and sprite.texture:
-				var tex_size = sprite.texture.get_size() * sprite.scale
-				var rect = Rect2(global_position - tex_size * 0.5, tex_size)
-				if rect.has_point(event.position):
-					_spawn_meat(event.position)
+			_spawn_meat(event.position)
 
 
 func _spawn_meat(spawn_position: Vector2):

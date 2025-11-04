@@ -37,24 +37,16 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 
 
 func _try_drop() -> void:
-	var zones: Array = get_tree().get_nodes_in_group("drop_zones")
 	var dropped: bool = false
-
-	for zone in zones:
-		if zone is Area2D:
-			var shape: CollisionShape2D = zone.get_node_or_null("CollisionShape2D")
-			if shape and shape.shape:
-				# Get the zone's bounding box in global space
-				var zone_rect: Rect2 = shape.shape.get_rect()  # explicit type
-				var transformed_rect: Rect2 = Rect2(shape.global_position - zone_rect.size * 0.5, zone_rect.size)
-				if item_type in zone.accepts:
-					if transformed_rect.has_point(global_position):
-						global_position = zone.global_position
-						if zone.has_signal("item_dropped"):
-							zone.emit_signal("item_dropped", self)
-						dropped = true
-						first_use = false
-						break
+	
+	for area in get_overlapping_areas():
+		if area.is_in_group("drop_zones") and item_type in area.accepts:
+			global_position = area.global_position
+			if area.has_signal("item_dropped"):
+				area.emit_signal("item_dropped", self)
+			dropped = true
+			first_use = false
+			break
 
 	if not dropped:
 		if item_type in meat_types:
