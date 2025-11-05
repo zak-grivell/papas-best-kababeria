@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://byix4fpb31pn6"]
 
+[ext_resource type="Script" uid="uid://cugip6flnt7fe" path="res://run_shop.gd" id="1_epxqf"]
 [ext_resource type="Texture2D" uid="uid://yvjjn6k4mmps" path="res://Game_Background_2.png" id="1_vqcse"]
 [ext_resource type="PackedScene" uid="uid://c3nr1rai4pp78" path="res://character.tscn" id="2_ofyq8"]
-[ext_resource type="PackedScene" uid="uid://b68xni5l1d75a" path="res://order_sheet.tscn" id="3_epxqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epxqf"]
 size = Vector2(259, 105.5)
@@ -11,6 +11,8 @@ size = Vector2(259, 105.5)
 size = Vector2(347.4486, 262.75113)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_epxqf")
+customer = ExtResource("2_ofyq8")
 
 [node name="background2" type="Sprite2D" parent="."]
 z_index = -9
@@ -35,14 +37,3 @@ scale = Vector2(0.7, 0.7)
 position = Vector2(-1275.7141, -125.714325)
 scale = Vector2(1.0301337, 0.7394285)
 shape = SubResource("RectangleShape2D_rewrb")
-
-[node name="character" parent="." instance=ExtResource("2_ofyq8")]
-position = Vector2(1048, 98.00002)
-scale = Vector2(0.7, 0.624)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_ofyq8")]
-position = Vector2(371, 421)
-scale = Vector2(0.7, 0.7)
-
-[node name="Node2D" parent="." instance=ExtResource("3_epxqf")]
-position = Vector2(1279, 291)

@@ -4,14 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://bnkawcqlblg6m" path="res://order sheet.png" id="1_sdbuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s03y5"]
-size = Vector2(178, 411)
+size = Vector2(176.76688, 408.77496)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_s03y5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.536743e-07, -1.9073486e-06)
+scale = Vector2(0.29634148, 0.25791863)
 texture = ExtResource("1_sdbuc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-position = Vector2(6, -4.5)
+position = Vector2(3.3744965, -7.7543716)
 shape = SubResource("RectangleShape2D_s03y5")

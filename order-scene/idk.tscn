@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqh03abojfd4s"]
+[gd_scene load_steps=3 format=3 uid="uid://dqh03abojfd4s"]
 
 [ext_resource type="Script" uid="uid://cm2vj1qtjsm7q" path="res://more_orders.gd" id="1_tbss1"]
+[ext_resource type="PackedScene" uid="uid://c3nr1rai4pp78" path="res://character.tscn" id="2_cdowr"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tbss1")
+customer = ExtResource("2_cdowr")

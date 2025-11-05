@@ -9,6 +9,7 @@ var order_details = []
 var meat_to_add
 var topping_to_add
 var drink_to_add
+var queue_manager: Node = null
 var meats = ["pork", "beef", "lamb", "chicken"]
 var toppings = ["fries", "chili_sauce", "ketchup", "mayo", "yogurt", "chili", "cabbage", "cucumber", "lettuce", "onion", "tomato"]
 var drinks = ["irn_bru", "west", "tennants", "belhaven"]
@@ -41,26 +42,15 @@ func _get_order() -> Array:
 
 func _physics_process(delta: float) -> void:
 	_move_towards_target(delta)
-
 func _move_towards_target(delta: float) -> void:
 	var direction = (target_position - global_position).normalized()
 	var distance = global_position.distance_to(target_position)
-
-	if distance > 5: # Move if not close enough
+	if distance > 5:
 		velocity = direction * move_speed
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-		global_position = target_position # Snap exactly in place
-
-func set_target(pos: Vector2):
-	target_position = pos
-
-func go_to_second_queue():
-	order_taken = true
-	target_position = Vector2(1070, 600) # Example waiting area
-
-
+		move_and_slide() 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -70,11 +60,18 @@ func _input(event: InputEvent) -> void:
 				if rect.has_point(event.position):
 					new_order = order.instantiate()
 					get_tree().root.add_child(new_order)
-					new_order.global_position = Vector2(0, 0)
-					new_order.scale = Vector2(1, 1)
-					new_order.order_details = order_details
+					new_order.global_position = Vector2(200, 200)
+					#new_order.scale = Vector2(1.5, 1.5)
+					#new_order.order_details = order_details
+					print(new_order,order_details)
 					order_taken = true
-					position = Vector2(1070, 600)
+					if queue_manager:
+						queue_manager.move_to_second_queue(self)
+
+func set_target(pos: Vector2) -> void:
+	target_position = pos
+	print("boo")
+	print(pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
