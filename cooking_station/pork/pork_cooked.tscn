@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6l7dl44ks87h"]
 
-[ext_resource type="Texture2D" uid="uid://bji3j11c0yadn" path="res://meat_pile.png" id="1_5t2pd"]
+[ext_resource type="Texture2D" uid="uid://bji3j11c0yadn" path="res://cooking_station/assets/pork_pile.png" id="1_5t2pd"]
 [ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://draggable.gd" id="2_hlerr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtr5r"]
