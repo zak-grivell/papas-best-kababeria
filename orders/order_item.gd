@@ -27,9 +27,9 @@ func render_with_object():
 	$Sauce/Items.clear()
 	
 	for cooked_topping in order.cooked_topings:
-		$CookedToppings/Items.add_icon_item(load("res://cooking_station/assets/{0}.png".format([
-			"Chips"
-		])))
+		$CookedToppings/Items.add_icon_item(load("res://meat_textures/{0}_pile.png".format(
+			[Order.get_enum_name(order.CookedToppings, cooked_topping)]
+		)))
 		
 	for topping in order.toppings:
 		$Toppings/Items.add_icon_item(load("res://build_station/Assets/Toppings/{0}.png".format(

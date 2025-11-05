@@ -11,7 +11,7 @@ extends "res://cooking_station/drop_zone.gd"
 @onready var sprite: Sprite2D = $Sprite2D
 
 
-const TIME = 0.5
+const TIME =20.0
 
 var current_item
 var type

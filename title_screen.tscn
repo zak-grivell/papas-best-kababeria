@@ -25,15 +25,10 @@ texture_disabled = ExtResource("1_ig5kc")
 texture_focused = ExtResource("2_05l2w")
 script = ExtResource("3_05l2w")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 909.0
-offset_top = 652.0
-offset_right = 2246.1758
-offset_bottom = 1348.0
-mouse_filter = 2
+[node name="TextureRect2" type="Sprite2D" parent="."]
+position = Vector2(1452, 958.00006)
+scale = Vector2(0.799, 0.7702439)
 texture = ExtResource("2_05l2w")
-expand_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hafda")
