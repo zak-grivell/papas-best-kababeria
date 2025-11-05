@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://44vpewpbs465"]
+[gd_scene load_steps=34 format=3 uid="uid://44vpewpbs465"]
 
 [ext_resource type="PackedScene" uid="uid://byix4fpb31pn6" path="res://order-scene/orders_main.tscn" id="1_vivmo"]
 [ext_resource type="PackedScene" uid="uid://bheb7evjpspe6" path="res://drinks_station/drinks_station.tscn" id="3_h2yge"]
@@ -14,7 +14,22 @@
 [ext_resource type="Texture2D" uid="uid://cf61581i686rr" path="res://assets/FinishOrderButton.png" id="12_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://cobxhkhu17dhp" path="res://assets/FinishOrderDisabled.png" id="13_w48qg"]
 [ext_resource type="Script" uid="uid://ca22is0k5iepp" path="res://done_button.gd" id="14_w48qg"]
-[ext_resource type="PackedScene" uid="uid://dnpgnku5ws7a" path="res://orders/order_item.tscn" id="15_vivmo"]
+[ext_resource type="PackedScene" uid="uid://dotm3yksnoa2l" path="res://order_finished_popup.tscn" id="15_vivmo"]
+[ext_resource type="AudioStream" uid="uid://dldlxj4vqkryf" path="res://sounds/GJ2025_Freezer or something.mp3" id="16_2cqfq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yaehf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_074og"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cegan"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82xsv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_getpj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryguw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d13ii"]
 
 [sub_resource type="Theme" id="Theme_4c57u"]
 
@@ -57,6 +72,13 @@ mouse_filter = 2
 theme_override_colors/drop_mark_color = Color(0.92977464, 0.5011101, 0, 1)
 theme_override_colors/font_selected_color = Color(0.970239, 0.94062257, 0, 1)
 theme_override_constants/tab_separation = 50
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yaehf")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_074og")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_cegan")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_82xsv")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_getpj")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ryguw")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_d13ii")
 tab_alignment = 1
 current_tab = 0
 tabs_position = 1
@@ -165,5 +187,12 @@ input_pickable = false
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_w48qg")
 
-[node name="OrderItem" parent="UI Layer" instance=ExtResource("15_vivmo")]
-position = Vector2(1800, 550)
+[node name="OrderFinishedPopup" parent="UI Layer" instance=ExtResource("15_vivmo")]
+visible = false
+offset_left = -200.0
+offset_right = -200.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_2cqfq")
+autoplay = true
+parameters/looping = true

@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 			
 func stopped_moving():
 	for area in get_overlapping_areas():
-		print(area.name)
+		# print(area.name)
 		if area.name == "Sink":
 			
 			if in_current_slot:

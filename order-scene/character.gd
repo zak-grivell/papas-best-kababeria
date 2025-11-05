@@ -1,78 +1,57 @@
-extends CharacterBody2D
+extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite2D
-@export var order: PackedScene
 
-var new_order
+@onready var done_button = get_node("/root/Node/UI Layer/DoneButton")
+
+@onready var order = load("res://orders/order_item.tscn")
+@export var textures: Array[CompressedTexture2D]
+
+var order_goto = Vector2(1800.0, 552.0)
+
+var can_take_order: bool = false
+
 var order_taken
 var order_details = []
-var meat_to_add
-var topping_to_add
-var drink_to_add
-var queue_manager: Node = null
-var meats = ["pork", "beef", "lamb", "chicken"]
-var toppings = ["fries", "chili_sauce", "ketchup", "mayo", "yogurt", "chili", "cabbage", "cucumber", "lettuce", "onion", "tomato"]
-var drinks = ["irn_bru", "west", "tennants", "belhaven"]
 
 @export var move_speed: float = 100.0
 var target_position: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Sprite2D.texture = textures[randi() % textures.size()]
 	order_taken = false
-	position = Vector2(1070, 390)
+	# position = Vector2(1070, 390)
 	sprite.scale = Vector2(0.336, 0.3)
 	order_details = _get_order()
 
-func _get_order() -> Array:
-	var meat_amounts = randi_range(1, 4)
-	for i in range(meat_amounts):
-		meat_to_add = randi_range(0, 3)
-		order_details.append(meats[meat_to_add])
-	var toppings_amounts = randi_range(0, 5)
-	for i in range(toppings_amounts):
-		topping_to_add = randi_range(0, 10)
-		order_details.append(toppings[topping_to_add])
-	var drinks_amounts = randi_range(0, 2)
-	for i in range(drinks_amounts):
-		drink_to_add = randi_range(0, 3)
-		order_details.append(drinks[drink_to_add])
-	print(order_details)
-	return order_details
+func _get_order() -> Order:
+	var cooked_toppings = Order.rand_from_enum(Order.CookedToppings, randi_range(1, 2))
+	var new_toppings = Order.rand_from_enum(Order.Toppings, randi_range(2, 6))
+	var sauces = Order.rand_from_enum(Order.Sauce, randi_range(0, 3))
+	var pint = Order.rand_from_enum(Order.Pint, 1)[0]
 
-func _physics_process(delta: float) -> void:
-	_move_towards_target(delta)
-func _move_towards_target(delta: float) -> void:
-	var direction = (target_position - global_position).normalized()
-	var distance = global_position.distance_to(target_position)
-	if distance > 5:
-		velocity = direction * move_speed
-		move_and_slide()
-	else:
-		velocity = Vector2.ZERO
-		move_and_slide() 
+	return Order.new(
+		cooked_toppings,
+		new_toppings,
+		sauces,
+		pint,
+		randf_range(0, 0.5),
+		self
+	)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if sprite and sprite.texture:
-				var tex_size = sprite.texture.get_size() * sprite.scale
-				var rect = Rect2(global_position - tex_size * 0.5, tex_size)
-				if rect.has_point(event.position):
-					new_order = order.instantiate()
-					get_tree().root.add_child(new_order)
-					new_order.global_position = Vector2(200, 200)
-					#new_order.scale = Vector2(1.5, 1.5)
-					#new_order.order_details = order_details
-					print(new_order,order_details)
-					order_taken = true
-					if queue_manager:
-						queue_manager.move_to_second_queue(self)
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and can_take_order and done_button.current_order == null:
+		var new_order = order.instantiate()
 
-func set_target(pos: Vector2) -> void:
-	target_position = pos
-	print("boo")
-	print(pos)
+		get_node("/root/Node/UI Layer").add_child(new_order)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+		new_order.position = order_goto
+
+		new_order.update_order(order_details)
+		
+		done_button.current_order = new_order
+		order_taken = true
+			
+		get_parent().move_to_second_queue(self)
+					

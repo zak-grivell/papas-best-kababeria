@@ -78,7 +78,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
 	
 	if pressed:
-		print("detecting pressed")
+		# print("detecting pressed")
 		dragging_items = true
 		og_pos = global_position
 		
@@ -105,9 +105,9 @@ func _process(_delta: float) -> void:
 					
 func on_place():
 	for area in get_overlapping_areas():
-		print(area)
+		# print(area)
 		if area.is_in_group("spawned_wraps"):
-			print("area found")
+			# print("area found")
 			for cooked in get_cooked_items():
 				var p = cooked.global_position
 				var s = cooked.global_scale

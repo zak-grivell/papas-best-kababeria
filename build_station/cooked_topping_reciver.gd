@@ -22,10 +22,11 @@ func delete_wrap(node):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(get_path())
+	pass
+	# print(get_path())
 	
 func send(node: Area2D):
-	print("sent", next_avaible_spot())
+	# print("sent", next_avaible_spot())
 	add_child(node)
 	
 	var spot = next_avaible_spot()
@@ -35,6 +36,6 @@ func send(node: Area2D):
 		
 	node.position = positions[spot]
 	
-	print(node.position, positions[spot])
+	# print(node.position, positions[spot])
 		
 	toppings[spot] = node

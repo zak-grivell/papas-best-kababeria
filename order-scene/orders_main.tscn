@@ -1,18 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://byix4fpb31pn6"]
+[gd_scene load_steps=4 format=3 uid="uid://byix4fpb31pn6"]
 
 [ext_resource type="Script" uid="uid://cugip6flnt7fe" path="res://order-scene/run_shop.gd" id="1_epxqf"]
 [ext_resource type="Texture2D" uid="uid://yvjjn6k4mmps" path="res://order-scene/Game_Background_2.png" id="1_vqcse"]
 [ext_resource type="PackedScene" uid="uid://c3nr1rai4pp78" path="res://order-scene/character.tscn" id="2_ofyq8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epxqf"]
-size = Vector2(259, 105.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rewrb"]
-size = Vector2(347.4486, 262.75113)
-
 [node name="Node2D" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_epxqf")
 customer = ExtResource("2_ofyq8")
 
@@ -21,21 +16,3 @@ z_index = -9
 position = Vector2(1109.844, 624.5)
 scale = Vector2(1.389805, 0.9976)
 texture = ExtResource("1_vqcse")
-
-[node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(149.00012, 357.99997)
-scale = Vector2(0.7210936, 0.51759994)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(636.533, 3.8640442)
-scale = Vector2(1.3867826, 1.9319942)
-shape = SubResource("RectangleShape2D_epxqf")
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1042, 446)
-scale = Vector2(0.7, 0.7)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1157.1428, 300.00003)
-scale = Vector2(1.0301337, 0.7394285)
-shape = SubResource("RectangleShape2D_rewrb")

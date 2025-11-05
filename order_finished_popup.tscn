@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://dotm3yksnoa2l"]
+
+[ext_resource type="Script" uid="uid://f4litk2gxxa1" path="res://finished_screen.gd" id="1_mqprd"]
+[ext_resource type="PackedScene" uid="uid://c3nr1rai4pp78" path="res://order-scene/character.tscn" id="1_uy0f4"]
+
+[sub_resource type="Gradient" id="Gradient_mqprd"]
+offsets = PackedFloat32Array(0.011904762, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iyhi4"]
+gradient = SubResource("Gradient_mqprd")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv72h"]
+
+[node name="OrderFinishedPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_mqprd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -400.0
+offset_right = 600.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_iyhi4")
+
+[node name="Drink Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 400.0
+offset_right = 1288.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(0.3198733, 0.31987324, 0.31987324, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gv72h")
+text = "Drink Score: "
+
+[node name="Kebab Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 544.0
+offset_right = 1112.0
+offset_bottom = 613.0
+theme_override_colors/font_color = Color(0.2285108, 0.2285108, 0.2285108, 1)
+theme_override_font_sizes/font_size = 50
+text = "Kebab Score:"
+
+[node name="Overall Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 680.0
+offset_right = 1096.0
+offset_bottom = 749.0
+theme_override_colors/font_color = Color(0.2285108, 0.2285108, 0.2285108, 1)
+theme_override_font_sizes/font_size = 50
+text = "Overall Score:"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 880.0
+offset_right = 1050.0
+offset_bottom = 971.0
+theme_override_font_sizes/font_size = 60
+text = "Next"
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_uy0f4")]
+position = Vector2(1304, 512)
+scale = Vector2(1, 1)
+script = null

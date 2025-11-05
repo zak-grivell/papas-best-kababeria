@@ -15,17 +15,11 @@ var offset = null
 
 var state = State.MainOrder
 
-func _ready() -> void:
-	order = Order.new(
-		[ Order.CookedToppings.chips, Order.CookedToppings.chips], 
-		[ Order.Toppings.chili, Order.Toppings.cucumber, Order.Toppings.tomato], 
-		[ Order.Sauce.mayo, Order.Sauce.chili ],
-		Order.Pint.tenents,
-		0.1
-	)
-	
-	render_with_object()
+func update_order(new_order):
+	order = new_order
+	await get_tree().process_frame
 
+	render_with_object()
 
 func render_with_object():
 	$CookedToppings/Items.clear()
@@ -39,12 +33,12 @@ func render_with_object():
 		
 	for topping in order.toppings:
 		$Toppings/Items.add_icon_item(load("res://build_station/Assets/Toppings/{0}.png".format(
-			[order.get_name(order.Toppings, topping)]
+			[Order.get_enum_name(order.Toppings, topping)]
 		)))
 		
 	for sauce in order.sauces:
 		$Sauce/Items.add_icon_item(load("res://build_station/Assets/Sauces/{0}_top.png".format(
-			[order.get_name(order.Sauce, sauce)]
+			[Order.get_enum_name(order.Sauce, sauce)]
 		)))
 	
 	for child in $Drink.get_children():
@@ -52,14 +46,14 @@ func render_with_object():
 		child.queue_free()
 		
 	var beer: Area2D = load("res://drinks_station/{0}.tscn".format(
-		[order.get_name(order.Pint,order.pint)]
+		[Order.get_enum_name(order.Pint,order.pint)]
 	)).instantiate()
 	
 	$Drink.add_child(beer)
 	
 	var beer_shape = beer.get_node("CollisionShape2D");
 	
-	beer.drink.render_drink(1, order.head_wanted)
+	beer.get_node("BeerMask").render_drink(1, order.head_wanted)
 	
 	beer.rotation_degrees = 0
 	beer.position.x = $Drink.size.x / 2.0
@@ -98,10 +92,6 @@ func _process(_delta: float) -> void:
 		
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	var is_pressed: bool = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
-	
-	if event is InputEventMouseButton:
-		print(event)
-	
 	
 	
 	if is_pressed:

@@ -1,18 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3nr1rai4pp78"]
+[gd_scene load_steps=8 format=3 uid="uid://c3nr1rai4pp78"]
 
 [ext_resource type="Texture2D" uid="uid://7r8brk1mcjsq" path="res://order-scene/guy.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://bchkn64g07jlt" path="res://order-scene/character.gd" id="2_pjt0s"]
-[ext_resource type="PackedScene" uid="uid://b68xni5l1d75a" path="res://order-scene/order_sheet.tscn" id="3_wa5vi"]
+[ext_resource type="Texture2D" uid="uid://5nnobe1gfjv6" path="res://assets/people/Merlin.webp" id="3_3xebi"]
+[ext_resource type="Texture2D" uid="uid://cya62mogrrjeu" path="res://assets/people/Elaine.png" id="4_5lrf1"]
+[ext_resource type="Texture2D" uid="uid://4lk7kl7jpqeo" path="res://assets/people/Lord_Kelvin.webp" id="5_yg2ga"]
+[ext_resource type="Texture2D" uid="uid://ckfyn6bwatgnf" path="res://assets/people/Chef.png" id="6_5lrf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wa5vi"]
-size = Vector2(212, 68)
+size = Vector2(212, 440)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="Area2D"]
+scale = Vector2(2, 2)
 script = ExtResource("2_pjt0s")
-order = ExtResource("3_wa5vi")
+textures = Array[CompressedTexture2D]([ExtResource("1_glpr6"), ExtResource("3_3xebi"), ExtResource("4_5lrf1"), ExtResource("5_yg2ga"), ExtResource("6_5lrf1")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, -75)
+position = Vector2(-6, 44)
 shape = SubResource("RectangleShape2D_wa5vi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

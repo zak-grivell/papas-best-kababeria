@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cq6pixfeopskb" path="res://drinks_station/assets/Background.png" id="1_dqg10"]
 [ext_resource type="PackedScene" uid="uid://cotskyv7td4e" path="res://drinks_station/tenents.tscn" id="2_mvdxp"]
-[ext_resource type="PackedScene" uid="uid://cafhtlqrhi54v" path="res://drinks_station/belhaven_best.tscn" id="4_dvtf4"]
+[ext_resource type="PackedScene" uid="uid://cafhtlqrhi54v" path="res://drinks_station/belhaven.tscn" id="4_dvtf4"]
 [ext_resource type="PackedScene" uid="uid://8gibdtjshnla" path="res://drinks_station/west.tscn" id="5_aks2u"]
 [ext_resource type="PackedScene" uid="uid://xs8ltswaqayx" path="res://drinks_station/bru.tscn" id="6_54l7f"]
 [ext_resource type="Script" uid="uid://ddo6m21mwpies" path="res://drinks_station/camera_2d.gd" id="6_kwk5w"]

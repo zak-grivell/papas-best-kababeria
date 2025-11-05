@@ -28,9 +28,7 @@ func check_avaliable() -> bool:
 
 func send_box(box: Node2D):
 	self.add_child(box)
-	
-	print(box.get_parent())
-	
+		
 	var spot = next_avaible_spot()
 	
 	if spot == -1:
