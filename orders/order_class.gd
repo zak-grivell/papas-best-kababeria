@@ -1,127 +1,93 @@
 class_name Order
 
 enum CookedToppings {
-	Lamb,
-	Beef,
-	Chicken,
-	Turkey,
-	Chips
+	lamb,
+	beef,
+	chicken,
+	turkey,
+	chips
 }
+
+func get_children_in_group(node: Node, group_name: String):
+	var res = []
+	
+	for child in node.get_children():
+		if child.is_in_group(group_name):
+			res.append(child)
+			
+	return res
+
+func get_name(e, v):
+	return e.keys()[v]
 
 var cooked_topings: Array[CookedToppings] = []
 
 func rank_cooked_toppings(wrap_node):
-	pass
+	var used = {}
+
+	for child in get_children_in_group(wrap_node, "cooked_topping"):
+		used[child.get_meta("cooked_topping")] = true
+			
+	return (float(
+		cooked_topings.reduce(func (acc, cooked_toping): return acc + int(used[get_name(CookedToppings, cooked_toping)]), 0)) 
+		/ float(used.size())
+	)
 
 enum Toppings {
-	Tomato,
-	Lettuce,
-	Onion,
-	Cabbage,
-	Chili,
-	Cucumber
+	tomato,
+	lettuce,
+	onion,
+	cabbage,
+	chili,
+	cucumber
 }
-
-func topping_to_string(topping: Toppings) -> String:
-	match topping:
-		Toppings.Tomato:
-			return "Tomato"
-		Toppings.Lettuce:
-			return "Lettuce"
-		Toppings.Onion:
-			return "Onion"
-		Toppings.Cabbage:
-			return "Cabbage"
-		Toppings.Chili:
-			return "Chili"
-		Toppings.Cucumber:
-			return "Cucumber"
-	
-	push_warning("pint is bad")
-	return ""
-
 
 var toppings: Array[Toppings] = []
 
 func rank_toppings(wrap_node):
 	var used = {}
 	
-	for item in toppings:
-		used[topping_to_string(item)] = false
-	
-	for child in wrap_node.get_children():
-		if child.is_in_group("sauce"):
-			used[child.get_meta("topping_type")] = true
-			
-	var fraction_used = used.values().reduce(func (acc, v): return acc + int(v), 0) / used.size()
-		
-	return fraction_used
+	for child in get_children_in_group(wrap_node, "topping"):
+		used[child.get_meta("topping_type")] = true
+								
+	return (float(
+		toppings.reduce(func (acc, topping): return acc + int(used[get_name(Toppings, topping)]), 0)) 
+		/ float(used.size())
+	)
+
 
 
 enum Sauce {
-	Chili,
-	Ketchup,
-	Mayo,
-	Yogurt,
-	BBQ,
+	chili,
+	ketchup,
+	mayo,
+	yogurt,
+	bbq,
 }
-
-func sauce_to_string(sauce: Sauce) -> String:
-	match sauce:
-		Sauce.Chili:
-			return "chili"
-		Sauce.Ketchup:
-			return "ketchup"
-		Sauce.Mayo:
-			return "mayo"
-		Sauce.Yogurt:
-			return "yogurt"
-		Sauce.BBQ:
-			return "bbq"
-	push_warning("pint is bad")
-	return ""
-
 
 var sauces: Array[Sauce] = []
 
 func rank_sauces(wrap_node:Node) -> float:
 	var used = {}
 	
-	for item in sauces:
-		used[sauce_to_string(item)] = false
-	
-	for child in wrap_node.get_children():
-		if child.is_in_group("sauce"):
-			used[child.get_meta("sauce_name")] = true
+	for child in get_children_in_group(wrap_node, "sauce"):
+		used[child.get_meta("sauce_name")] = true
 			
+	print(used)
 
-	var fraction_used = used.values().reduce(func (acc, v): return acc + int(v), 0) / used.size()
-			
-
-	return fraction_used
+	return (float(
+		sauces.reduce(func (acc, sauce): return acc + int(used[get_name(Sauce, sauce)]), 0)) 
+		/ float(used.size())
+	)
 
 
 
 enum Pint {
-	Tenents,
-	Belhaven,
-	West,
-	Bru
+	tenents,
+	belhaven,
+	west,
+	bru
 }
-
-func pint_to_string(pint_enum: Pint) -> String:
-	match pint_enum:
-		Pint.Tenents:
-			return "tenents"
-		Pint.West:
-			return "west"
-		Pint.Bru:
-			return "bru"
-		Pint.Belhaven:
-			return "belhaven"
-			
-	push_warning("pint is bad")
-	return ""
 
 var pint: Pint
 var head_wanted: float
@@ -135,15 +101,15 @@ func integer_linear_ranking(x: float, s:float, m:float,c: float,):
 func rank_pint(pint_node: Node):
 	var type = pint_node.get_meta("beer_type")
 	
-	
 	if not type:
 		print("beer without type")
 		return 1
 		
-	if type != pint_to_string(pint):
+	if type != get_name(Pint, pint):
 		return 0
 				
 	return integer_linear_ranking(pint_node.head_portion - head_wanted, 0.1, -0.6, 1) * integer_linear_ranking(abs(pint_node.beer_procress), 0.2, -1, 1)
+
 
 
 func _init(new_cooked_topings: Array[CookedToppings], new_toppings: Array[Toppings], new_sauces: Array[Sauce], new_pint: Pint, new_head: float):
@@ -152,3 +118,19 @@ func _init(new_cooked_topings: Array[CookedToppings], new_toppings: Array[Toppin
 	sauces = new_sauces
 	pint = new_pint
 	head_wanted = new_head
+
+func rank(kebab:Node, beer:Node):
+	var wrap_nodes = get_children_in_group(kebab, "spawned_wraps")
+	
+	if len(wrap_nodes) > 0:
+		var wrap_node = wrap_nodes[0]
+
+		return {
+			'cooked': rank_cooked_toppings(wrap_node),
+			'toppings': rank_toppings(wrap_node),
+			'sauce': rank_sauces(wrap_node),
+			'beer': rank_pint(beer)
+		}
+	else:
+		for child in kebab.get_children():
+			print(child.name, ": ", child.get_groups())

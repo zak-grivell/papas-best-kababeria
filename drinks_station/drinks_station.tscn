@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bheb7evjpspe6"]
+[gd_scene load_steps=15 format=3 uid="uid://bheb7evjpspe6"]
 
 [ext_resource type="Texture2D" uid="uid://cq6pixfeopskb" path="res://drinks_station/assets/Background.png" id="1_dqg10"]
 [ext_resource type="PackedScene" uid="uid://cotskyv7td4e" path="res://drinks_station/tenents.tscn" id="2_mvdxp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cowutjrgsi01p" path="res://drinks_station/assets/UpButton.png" id="9_wcib1"]
 [ext_resource type="Script" uid="uid://ccv4l106u8ldq" path="res://drinks_station/kebab_holder.gd" id="10_1d4y2"]
 [ext_resource type="Texture2D" uid="uid://bkjh6ns6srl2" path="res://drinks_station/assets/beer-taps.png" id="10_6j5ia"]
+[ext_resource type="Script" uid="uid://kkb65nuwba6h" path="res://drinks_station/beer_slider.gd" id="11_tbskn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aks2u"]
 size = Vector2(283.75, 565)
@@ -124,11 +125,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = -200.0
+offset_top = -101.0
 offset_right = 200.0
-offset_bottom = 34.0
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("7_y07b5")
 texture_pressed = ExtResource("7_y07b5")
 texture_hover = ExtResource("7_y07b5")
@@ -146,11 +148,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = 1055.0
+offset_top = 1149.0
 offset_right = 200.0
-offset_bottom = 1289.0
+offset_bottom = 1383.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("9_wcib1")
 texture_pressed = ExtResource("9_wcib1")
 texture_hover = ExtResource("9_wcib1")
@@ -163,53 +166,57 @@ camera = NodePath("../Camera2D")
 position = Vector2(553, 317)
 
 [node name="Sprite2D" type="Sprite2D" parent="BeerTap"]
-position = Vector2(202.25, 422.75)
-scale = Vector2(1.3628571, 1.256701)
+position = Vector2(184, 371.56253)
+scale = Vector2(1.3628571, 1.6595361)
 texture = ExtResource("10_6j5ia")
 
 [node name="BruSlider" type="VSlider" parent="BeerTap"]
 visible = false
-offset_left = 95.0
-offset_top = -41.0
-offset_right = 111.0
-offset_bottom = 106.0
+offset_left = 74.0
+offset_top = -180.0
+offset_right = 90.0
+offset_bottom = -33.0
 max_value = 1.0
 step = 0.01
 value = 1.0
 scrollable = false
+script = ExtResource("11_tbskn")
 
 [node name="TenentsSlider" type="VSlider" parent="BeerTap"]
 visible = false
-offset_left = 326.0
-offset_top = -45.0
-offset_right = 342.0
-offset_bottom = 102.0
+offset_left = 308.0
+offset_top = -180.0
+offset_right = 324.0
+offset_bottom = -33.0
 max_value = 1.0
 step = 0.01
 value = 1.0
 scrollable = false
+script = ExtResource("11_tbskn")
 
 [node name="BelhavenSlider" type="VSlider" parent="BeerTap"]
 visible = false
-offset_left = 460.0
-offset_top = -52.0
-offset_right = 476.0
-offset_bottom = 95.0
+offset_left = 442.0
+offset_top = -180.0
+offset_right = 458.0
+offset_bottom = -33.0
 max_value = 1.0
 step = 0.01
 value = 1.0
 scrollable = false
+script = ExtResource("11_tbskn")
 
 [node name="WestSlider" type="VSlider" parent="BeerTap"]
 visible = false
-offset_left = -37.0
-offset_top = -40.0
-offset_right = -21.0
-offset_bottom = 107.0
+offset_left = -53.0
+offset_top = -180.0
+offset_right = -37.0
+offset_bottom = -33.0
 max_value = 1.0
 step = 0.01
 value = 1.0
 scrollable = false
+script = ExtResource("11_tbskn")
 
 [node name="Sink" type="Area2D" parent="."]
 

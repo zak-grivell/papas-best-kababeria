@@ -16,6 +16,12 @@ extends TextureButton
 	get:
 		return current_kebab
 
+@export var current_order = null:
+	set(value):
+		current_order = value
+		check_ready()
+	get:
+		return current_order
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,15 +29,14 @@ func _ready() -> void:
 	print(get_path())
 
 func on_click():
-	if current_drink == null or current_kebab == null:
+	if current_drink == null or current_kebab == null or current_order == null:
 		return
+		
+	print(current_order.order.rank(current_kebab, current_drink))
+		
 		
 	print("check logic here")
 
 func check_ready():
 	print(current_drink, current_kebab)
-	disabled = current_drink == null or current_kebab == null
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	disabled = current_drink == null or current_kebab == null or current_order == null

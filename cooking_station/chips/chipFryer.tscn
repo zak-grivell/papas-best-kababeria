@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs4d6oqw6gxe0"]
+[gd_scene load_steps=6 format=3 uid="uid://bs4d6oqw6gxe0"]
 
-[ext_resource type="Script" uid="uid://cpvojvr6vqx28" path="res://chip_fryer.gd" id="1_ky8mi"]
-[ext_resource type="PackedScene" uid="uid://d3658trpgufsd" path="res://potato.tscn" id="2_ml73d"]
-[ext_resource type="Texture2D" uid="uid://c1xtin4xu78vn" path="res://fryer.png" id="2_vy4w8"]
+[ext_resource type="Script" uid="uid://cpvojvr6vqx28" path="res://cooking_station/chips/chip_fryer.gd" id="1_ky8mi"]
+[ext_resource type="PackedScene" uid="uid://d3658trpgufsd" path="res://cooking_station/chips/potato.tscn" id="2_ml73d"]
+[ext_resource type="Texture2D" uid="uid://c1xtin4xu78vn" path="res://cooking_station/assets/fryer.png" id="2_vy4w8"]
+[ext_resource type="AudioStream" uid="uid://kiyvuxl6ccyw" path="res://sounds/Game Jam SFX_Frying Sound01.wav" id="4_rdu6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(221.875, 198)
@@ -20,3 +21,6 @@ shape = SubResource("RectangleShape2D_1bvp3")
 position = Vector2(-45, 4.000001)
 scale = Vector2(1.1399999, 1.118)
 texture = ExtResource("2_vy4w8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rdu6m")

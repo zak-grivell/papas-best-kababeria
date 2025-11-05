@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvdul4uwy4ymq"]
+
+[ext_resource type="Script" uid="uid://wc52ul2dhccf" path="res://day_scene.gd" id="1_gtpyn"]
+[ext_resource type="Texture2D" uid="uid://bf66krumd0qv8" path="res://assets/Main Screen.png" id="1_iy2bo"]
+[ext_resource type="Texture2D" uid="uid://13by45n57fvk" path="res://assets/day_indicator.png" id="2_yayrf"]
+[ext_resource type="Script" uid="uid://c7fr1celpmc0o" path="res://day_counter.gd" id="3_0puyk"]
+[ext_resource type="AudioStream" uid="uid://dyac27t0my650" path="res://sounds/GJ2025_Opening Shot.mp3" id="5_b7n0p"]
+
+[node name="DayScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gtpyn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.053, 1.053)
+texture = ExtResource("1_iy2bo")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -243.44733
+offset_top = -316.47675
+offset_right = 731.55273
+offset_bottom = 189.52344
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yayrf")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 708.45215
+offset_top = 1039.8862
+offset_right = 1194.6819
+offset_bottom = 1176.8862
+theme_override_font_sizes/font_size = 100
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_0puyk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_b7n0p")
+autoplay = true
+parameters/looping = true

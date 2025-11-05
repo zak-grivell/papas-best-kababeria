@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bstc4o4r586r1"
+path="res://.godot/imported/Game Jame SFX_Page Click06.wav-6a2337210159906cfd7dd0d73ff406aa.sample"
+
+[deps]
+
+source_file="res://sounds/Game Jame SFX_Page Click06.wav"
+dest_files=["res://.godot/imported/Game Jame SFX_Page Click06.wav-6a2337210159906cfd7dd0d73ff406aa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

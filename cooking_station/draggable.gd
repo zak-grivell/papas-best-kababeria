@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Draggable
 
+var up: AudioStream = preload("res://sounds/Game Jame SFX_Drop Sound18.wav")
+
 @export var item_type: String = ""
 @export var delete_on_not_found: bool = false
 var dragging: bool = false
@@ -12,9 +14,15 @@ var start_position: Vector2 = Vector2.ZERO
 
 @export var on_spawn_drag: bool
 
+@onready var player := AudioStreamPlayer.new()
+
 var first_use = true
 
 func _ready() -> void:
+	player.stream = up
+	
+	add_child(player)
+	
 	await get_tree().process_frame
 	start_position = global_position
 	if on_spawn_drag:
@@ -44,6 +52,9 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 func _try_drop() -> void:
 	var dropped: bool = false
 	
+	player.stop()
+	player.play()
+	
 	for area in get_overlapping_areas():
 		if area.is_in_group("drop_zones") and item_type in area.accepts:
 			global_position = area.global_position
@@ -53,8 +64,7 @@ func _try_drop() -> void:
 			first_use = false
 			break
 
-	if not dropped:
-		
+	if not dropped:		
 		if delete_on_not_found:
 			queue_free()
 		else:	

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gl5l2251ltll"
-path="res://.godot/imported/Chili.png-40085a7844d9c67c1bc968bffdd625c4.ctex"
+path="res://.godot/imported/chili.png-b206c5a8ad5ebacc86eebdbb86ca8726.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build_station/Assets/Toppings/Chili.png"
-dest_files=["res://.godot/imported/Chili.png-40085a7844d9c67c1bc968bffdd625c4.ctex"]
+source_file="res://build_station/Assets/Toppings/chili.png"
+dest_files=["res://.godot/imported/chili.png-b206c5a8ad5ebacc86eebdbb86ca8726.ctex"]
 
 [params]
 

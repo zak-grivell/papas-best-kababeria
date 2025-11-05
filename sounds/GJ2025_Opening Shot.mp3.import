@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyac27t0my650"
+path="res://.godot/imported/GJ2025_Opening Shot.mp3-892d92c0a268dd7082ed9de78f19c01e.mp3str"
+
+[deps]
+
+source_file="res://sounds/GJ2025_Opening Shot.mp3"
+dest_files=["res://.godot/imported/GJ2025_Opening Shot.mp3-892d92c0a268dd7082ed9de78f19c01e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

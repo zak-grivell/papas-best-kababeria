@@ -27,9 +27,7 @@ func _ready() -> void:
 	accepts.append("chicken_uncooked")
 	accepts.append("pork_uncooked")
 
-func _on_item_dropped(item: Draggable) -> String:
-	print(item.item_type, "            ", current_item)
-	
+func _on_item_dropped(item: Draggable) -> String:	
 	if current_item != null:
 		current_item.queue_free()
 		sprite.texture = load("res://cooking_station/assets/turner.png")
@@ -40,7 +38,7 @@ func _on_item_dropped(item: Draggable) -> String:
 	current_item.visible = false
 	if current_item.item_type == "lamb_uncooked":
 		type = "lamb_uncooked"
-		_spawn_meat(item.start_position)
+		_spawn_meat(item.start_position, false, true)
 		sprite.texture = load("res://cooking_station/assets/lamb_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		await get_tree().create_timer(TIME).timeout
@@ -49,7 +47,7 @@ func _on_item_dropped(item: Draggable) -> String:
 		type = "lamb"
 	elif current_item.item_type == "beef_uncooked":
 		type = "beef_uncooked"
-		_spawn_meat(item.start_position)
+		_spawn_meat(item.start_position, false, true)
 		sprite.texture = load("res://cooking_station/assets/beef_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		await get_tree().create_timer(TIME).timeout
@@ -58,7 +56,7 @@ func _on_item_dropped(item: Draggable) -> String:
 		type = "beef"
 	elif current_item.item_type == "chicken_uncooked":
 		type = "chicken_uncooked"
-		_spawn_meat(item.start_position)
+		_spawn_meat(item.start_position, false, true)
 		sprite.texture = load("res://cooking_station/assets/chicken_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		await get_tree().create_timer(TIME).timeout
@@ -67,7 +65,7 @@ func _on_item_dropped(item: Draggable) -> String:
 		type = "chicken"
 	elif current_item.item_type == "pork_uncooked":
 		type = "pork_uncooked"
-		_spawn_meat(item.start_position)
+		_spawn_meat(item.start_position, false, true)
 		sprite.texture = load("res://cooking_station/assets/pork_wait.png")
 		sprite.scale = Vector2(0.55, 0.55)
 		await get_tree().create_timer(TIME).timeout
@@ -78,15 +76,14 @@ func _on_item_dropped(item: Draggable) -> String:
 
 
 #function to click on meat turner and create meat piles
-func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		print("detected", click_count)
-	
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		_spawn_meat(event.position)
+		$AudioStreamPlayer.stop()
+		$AudioStreamPlayer.play()
+		_spawn_meat(event.position, true, true)
 
 
-func _spawn_meat(spawn_position: Vector2):
+func _spawn_meat(spawn_position: Vector2, delete_on_not_found: bool, on_spawn_drag: bool):
 	if type in ["pork", "chicken", "beef", "lamb", "lamb_uncooked", "beef_uncooked", "chicken_uncooked", "pork_uncooked"]:
 		if type == "lamb":
 			new_meat = lamb.instantiate()
@@ -110,7 +107,9 @@ func _spawn_meat(spawn_position: Vector2):
 			angle = 40.8
 		get_parent().add_child(new_meat)
 		new_meat.global_position = spawn_position
-		new_meat.delete_on_not_found = true
+		new_meat.delete_on_not_found = delete_on_not_found
+		new_meat.on_spawn_drag = on_spawn_drag
+
 		if size != null:
 			new_meat.rotation_degrees = angle
 			new_meat.scale = size

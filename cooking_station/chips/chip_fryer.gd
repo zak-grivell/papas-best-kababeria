@@ -11,9 +11,11 @@ func _ready() -> void:
 func _on_item_dropped(item: Draggable) -> void:
 	current_item = item
 	new_potato = potato.instantiate()
-	get_tree().root.add_child(new_potato)
+	get_parent().add_child(new_potato)
 	new_potato.global_position = item.start_position
+	$AudioStreamPlayer.play()
 	await get_tree().create_timer(20).timeout
+	$AudioStreamPlayer.stop()
 	current_item.item_type = "fries"
 	current_item.get_node("Sprite2D").texture = load("res://cooking_station/assets/fries.png")
 	current_item.add_to_group("cooked_topping")

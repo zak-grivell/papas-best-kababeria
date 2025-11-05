@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://yphb8ckw8brf"
+path="res://.godot/imported/Game Jame SFX_Drop Sound18.wav-3d4fb7c444437f5838133ad640444597.sample"
+
+[deps]
+
+source_file="res://sounds/Game Jame SFX_Drop Sound18.wav"
+dest_files=["res://.godot/imported/Game Jame SFX_Drop Sound18.wav-3d4fb7c444437f5838133ad640444597.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

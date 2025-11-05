@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://wd6v4j0gotbv"]
+[gd_scene load_steps=13 format=3 uid="uid://wd6v4j0gotbv"]
 
-[ext_resource type="Script" uid="uid://clxt26cq4rpg2" path="res://turner.gd" id="1_84qlb"]
-[ext_resource type="PackedScene" uid="uid://b2l476pq16ym" path="res://lamb.tscn" id="2_3if1a"]
-[ext_resource type="Texture2D" uid="uid://d0qch8w1ial1a" path="res://turner.png" id="2_84qlb"]
-[ext_resource type="PackedScene" uid="uid://sk5pat5n7aug" path="res://lamb_cooked.tscn" id="2_ehvi6"]
-[ext_resource type="PackedScene" uid="uid://b6l7dl44ks87h" path="res://pork_cooked.tscn" id="3_6au2a"]
-[ext_resource type="PackedScene" uid="uid://313cwmveoi8o" path="res://raw_pork.tscn" id="4_4gjy4"]
-[ext_resource type="PackedScene" uid="uid://d1y3hl2wn84ct" path="res://beef_cooked.tscn" id="4_7g01l"]
-[ext_resource type="PackedScene" uid="uid://drytdagqjk6me" path="res://raw_chicken.tscn" id="5_8231d"]
-[ext_resource type="PackedScene" uid="uid://g12j7jbrykod" path="res://chicken_cooked.tscn" id="5_qljxj"]
-[ext_resource type="PackedScene" uid="uid://bxcm0f7pr43q5" path="res://raw_beef.tscn" id="6_n7joq"]
+[ext_resource type="Script" uid="uid://clxt26cq4rpg2" path="res://cooking_station/turner.gd" id="1_84qlb"]
+[ext_resource type="PackedScene" uid="uid://b2l476pq16ym" path="res://cooking_station/lamb/lamb.tscn" id="2_3if1a"]
+[ext_resource type="Texture2D" uid="uid://d0qch8w1ial1a" path="res://cooking_station/assets/turner.png" id="2_84qlb"]
+[ext_resource type="PackedScene" uid="uid://sk5pat5n7aug" path="res://cooking_station/lamb/lamb_cooked.tscn" id="2_ehvi6"]
+[ext_resource type="PackedScene" uid="uid://b6l7dl44ks87h" path="res://cooking_station/pork/pork_cooked.tscn" id="3_6au2a"]
+[ext_resource type="PackedScene" uid="uid://313cwmveoi8o" path="res://cooking_station/pork/raw_pork.tscn" id="4_4gjy4"]
+[ext_resource type="PackedScene" uid="uid://d1y3hl2wn84ct" path="res://cooking_station/beef/beef_cooked.tscn" id="4_7g01l"]
+[ext_resource type="PackedScene" uid="uid://drytdagqjk6me" path="res://cooking_station/chicken/raw_chicken.tscn" id="5_8231d"]
+[ext_resource type="PackedScene" uid="uid://g12j7jbrykod" path="res://cooking_station/chicken/chicken_cooked.tscn" id="5_qljxj"]
+[ext_resource type="PackedScene" uid="uid://bxcm0f7pr43q5" path="res://cooking_station/beef/raw_beef.tscn" id="6_n7joq"]
+[ext_resource type="AudioStream" uid="uid://bfmrda8siynwk" path="res://sounds/Game Jame SFX_Metallic Knife Sound25.wav" id="11_8b7lu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(198.66667, 266.08334)
@@ -34,3 +35,6 @@ shape = SubResource("RectangleShape2D_1bvp3")
 position = Vector2(2, -9)
 scale = Vector2(0.45, 0.409)
 texture = ExtResource("2_84qlb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_8b7lu")

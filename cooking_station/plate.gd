@@ -115,8 +115,14 @@ func on_place():
 				area.add_child(cooked)
 				cooked.global_position = p
 				cooked.global_scale = s
+				
+			var tween := create_tween()
+			
+			tween.tween_property(self, "global_position", Vector2(-300, global_position.y), 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+			tween.finished.connect(func (): queue_free())
 
-			return
+			return	
 				
 	var sprite_pos = $Sprite2D.global_position
 	global_position = og_pos

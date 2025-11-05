@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://da6oqcclvpwah"]
+
+[ext_resource type="Texture2D" uid="uid://bf66krumd0qv8" path="res://assets/Main Screen.png" id="1_ig5kc"]
+[ext_resource type="Texture2D" uid="uid://bo8p3n28ip0b1" path="res://assets/title_screen.png" id="2_05l2w"]
+[ext_resource type="Script" uid="uid://bys667b85yoyy" path="res://title_screen.gd" id="3_05l2w"]
+[ext_resource type="AudioStream" uid="uid://baw2yb1avxmti" path="res://sounds/GJ2025_Title Screen.mp3" id="3_hafda"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 2060.0
+offset_bottom = 1323.0
+scale = Vector2(1.053, 1.053)
+texture_normal = ExtResource("1_ig5kc")
+texture_pressed = ExtResource("1_ig5kc")
+texture_hover = ExtResource("1_ig5kc")
+texture_disabled = ExtResource("1_ig5kc")
+texture_focused = ExtResource("2_05l2w")
+script = ExtResource("3_05l2w")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 909.0
+offset_top = 652.0
+offset_right = 2246.1758
+offset_bottom = 1348.0
+mouse_filter = 2
+texture = ExtResource("2_05l2w")
+expand_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hafda")
+autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 1059.0
+offset_right = 653.0
+offset_bottom = 1196.0
+theme_override_font_sizes/font_size = 100
+text = "Click to start"

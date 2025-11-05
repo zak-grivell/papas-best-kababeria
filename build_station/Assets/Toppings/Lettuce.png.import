@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyx6pmhxo6764"
-path="res://.godot/imported/Lettuce.png-4e0d142c99f2660da17a1401dd0d6bdb.ctex"
+path="res://.godot/imported/lettuce.png-0ad5f9d0a3141f741eaf76e9a4dc613d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build_station/Assets/Toppings/Lettuce.png"
-dest_files=["res://.godot/imported/Lettuce.png-4e0d142c99f2660da17a1401dd0d6bdb.ctex"]
+source_file="res://build_station/Assets/Toppings/lettuce.png"
+dest_files=["res://.godot/imported/lettuce.png-0ad5f9d0a3141f741eaf76e9a4dc613d.ctex"]
 
 [params]
 

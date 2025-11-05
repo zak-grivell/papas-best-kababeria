@@ -2,6 +2,7 @@ extends Area2D
 
 enum State { TopBar, MainOrder }
 
+@onready var done_button = get_node("/root/Node/UI Layer/DoneButton")
 
 @onready var shape = $CollisionShape2D
 var order: Order
@@ -12,12 +13,14 @@ var last_position = null
 var last_scale = null
 var offset = null
 
+var state = State.MainOrder
+
 func _ready() -> void:
 	order = Order.new(
-		[ Order.CookedToppings.Chips, Order.CookedToppings.Chips], 
-		[ Order.Toppings.Chili, Order.Toppings.Cucumber, Order.Toppings.Tomato], 
-		[ Order.Sauce.Mayo, Order.Sauce.Chili ],
-		Order.Pint.Tenents,
+		[ Order.CookedToppings.chips, Order.CookedToppings.chips], 
+		[ Order.Toppings.chili, Order.Toppings.cucumber, Order.Toppings.tomato], 
+		[ Order.Sauce.mayo, Order.Sauce.chili ],
+		Order.Pint.tenents,
 		0.1
 	)
 	
@@ -36,24 +39,20 @@ func render_with_object():
 		
 	for topping in order.toppings:
 		$Toppings/Items.add_icon_item(load("res://build_station/Assets/Toppings/{0}.png".format(
-			[order.topping_to_string(topping)]
+			[order.get_name(order.Toppings, topping)]
 		)))
 		
 	for sauce in order.sauces:
 		$Sauce/Items.add_icon_item(load("res://build_station/Assets/Sauces/{0}_top.png".format(
-			[order.sauce_to_string(sauce)]
+			[order.get_name(order.Sauce, sauce)]
 		)))
 	
 	for child in $Drink.get_children():
 		$Drink.remove_child(child)
 		child.queue_free()
 		
-	print("res://drinks_station/{0}.tscn".format(
-		[order.pint_to_string(order.pint)]
-	))
-		
 	var beer: Area2D = load("res://drinks_station/{0}.tscn".format(
-		[order.pint_to_string(order.pint)]
+		[order.get_name(order.Pint,order.pint)]
 	)).instantiate()
 	
 	$Drink.add_child(beer)
@@ -79,12 +78,18 @@ func _process(_delta: float) -> void:
 			
 			for area in get_overlapping_areas():
 				if area.name == "TopBar":
+					if state == State.MainOrder:
+						done_button.current_order = null
+					
 					scale = Vector2(0.25, 0.25)
 					position = Vector2(get_global_mouse_position().x, 110)
+					state = State.TopBar
 					return
 				elif area.name == "MainOrder":
 					position = area.position
+					done_button.current_order = self
 					scale = Vector2(1, 1)
+					state = State.MainOrder
 					return
 				
 			global_position = last_position

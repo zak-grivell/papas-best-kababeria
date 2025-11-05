@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2l476pq16ym"]
 
-[ext_resource type="Texture2D" uid="uid://bmm1tbjylpmf1" path="res://lamb.png" id="1_ov282"]
-[ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://draggable.gd" id="2_hidjo"]
+[ext_resource type="Texture2D" uid="uid://bmm1tbjylpmf1" path="res://cooking_station/assets/lamb.png" id="1_ov282"]
+[ext_resource type="Script" uid="uid://m3r7615xxf6q" path="res://cooking_station/draggable.gd" id="2_hidjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtr5r"]
 size = Vector2(96.96971, 63.999977)
