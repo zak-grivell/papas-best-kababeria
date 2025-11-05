@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnkawcqlblg6m"
-path="res://.godot/imported/order sheet.png-b892da74964d4e72f944b353a255592f.ctex"
+path="res://.godot/imported/order sheet.png-da8466692ccd4c83928afa8305a0ced2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://order sheet.png"
-dest_files=["res://.godot/imported/order sheet.png-b892da74964d4e72f944b353a255592f.ctex"]
+source_file="res://order-scene/order sheet.png"
+dest_files=["res://.godot/imported/order sheet.png-da8466692ccd4c83928afa8305a0ced2.ctex"]
 
 [params]
 

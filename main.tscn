@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://44vpewpbs465"]
 
-[ext_resource type="PackedScene" uid="uid://da2oisa3a1chr" path="res://orders/order_station.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://byix4fpb31pn6" path="res://order-scene/orders_main.tscn" id="1_vivmo"]
 [ext_resource type="PackedScene" uid="uid://bheb7evjpspe6" path="res://drinks_station/drinks_station.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bspg3f7073uow" path="res://build_station/build_station.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://iosb2w0fsbmo" path="res://cooking_station/cook_station.tscn" id="3_vivmo"]
@@ -64,8 +64,9 @@ clip_tabs = false
 tabs_visible = false
 all_tabs_in_front = true
 
-[node name="Order Station" parent="TabContainer" instance=ExtResource("1_0xm2m")]
+[node name="Order Station" parent="TabContainer" instance=ExtResource("1_vivmo")]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Cooking Station" parent="TabContainer" instance=ExtResource("3_vivmo")]
 visible = false
